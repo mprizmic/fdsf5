@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block contenedor_principal %}
+    <form method="POST">
+        <div class="form-group">
+            <label for="nombre">
+            Nombre
+            </label>
+            <input type="text" class="form-control" value="{{ categoria.nombre }}" name="nombre" id="nombre" placeholder="Nombre" />       
+        </div>
+
+        <input type="hidden" name="_token" value="{{ csrf_token('categoria') }}">
+        <button type="submit" class="btn btn-outline-success">
+        Guardar
+        </button>
+    </form>
+{% endblock %}

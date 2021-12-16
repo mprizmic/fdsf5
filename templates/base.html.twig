@@ -7,27 +7,43 @@
         Mis Marcadores!
       {% endblock %}
     </title>
+
     {% block stylesheets %}
       <link rel="stylesheet" href="/css/bootstrap.min.css" />
       <link rel="stylesheet" href="/css/open-iconic-bootstrap.css" />
       <link rel="stylesheet" href="/css/offcanvas.css" />
     {% endblock %}
+  
   </head>
+  
   <body class="bg-light">
     {% block body %}
+  
       {% block menu %}
         {% include 'index/_menu.html.twig' %}
       {% endblock %}
+  
       <div role="main" class="container">
         {% block contenedor_principal %}
 
         {% endblock %}
       </div>
+
+      <div>
+        {% block footer %}
+          <span> {{ "aca va el footer" }}
+            <a class="separador" style="" href="" >Contacto</a>
+            <a class="separador" style="" href="" >Acerca de ...</a>
+          </span>
+        {% endblock %}
+      </div>
+        
       {% block javascript %}
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/offcanvas.js"></script>
       {% endblock %}
+  
     {% endblock %}
   </body>
 </html>
