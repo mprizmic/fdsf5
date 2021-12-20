@@ -13,11 +13,11 @@
       <li class="nav-item"><a class="nav-link" href="#">Categoria 2</a></li>
     </ul>
     <div class="d-md-flex my-2 my-lg-0">
-      <a class="btn btn-outline-success mr-2 w-100 mb-3 mb-sm-0" title="Gestión de categorias" href="#">
+      <a class="btn btn-outline-success mr-2 w-100 mb-3 mb-sm-0" title="Gestión de categorias" href="{{ path('app_listado_categoria') }}">
         Categorías
       </a>
-      <a class="btn btn-outline-success mr-2 w-100" title="Añadir marcador" href="#">
-        <span class="oi oi-plus" title="añadir" aria-hidden="true"></span>
+      <a class="btn btn-outline-success mr-2 w-100" title="Añadir marcador" href="{{ path('app_nueva_categoria') }}">
+        <span class="oi oi-plus" title="añadir" aria-hidden="true" ></span>
       </a>
     </div>
     <form class="form-inline">
