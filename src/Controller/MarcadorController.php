@@ -16,15 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MarcadorController extends AbstractController
 {
-    /**
-     * @Route("/", name="marcador_index", methods={"GET"})
-     */
-    public function index(MarcadorRepository $marcadorRepository): Response
-    {
-        return $this->render('marcador/index.html.twig', [
-            'marcadors' => $marcadorRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="marcador_new", methods={"GET", "POST"})
@@ -35,11 +26,14 @@ class MarcadorController extends AbstractController
         $form = $this->createForm(MarcadorType::class, $marcador);
         $form->handleRequest($request);
 
+        // form->isValid aplica las validaciones que le puse en PHP a través de las anotaciones en Marcador::class
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($marcador);
             $entityManager->flush();
 
-            return $this->redirectToRoute('marcador_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Marcador creado');
+
+            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('marcador/new.html.twig', [
@@ -47,17 +41,6 @@ class MarcadorController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="marcador_show", methods={"GET"})
-     */
-    public function show(Marcador $marcador): Response
-    {
-        return $this->render('marcador/show.html.twig', [
-            'marcador' => $marcador,
-        ]);
-    }
-
     /**
      * @Route("/{id}/edit", name="marcador_edit", methods={"GET", "POST"})
      */
@@ -69,7 +52,9 @@ class MarcadorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('marcador_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Marcador modificado');
+
+            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('marcador/edit.html.twig', [
@@ -86,8 +71,10 @@ class MarcadorController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$marcador->getId(), $request->request->get('_token'))) {
             $entityManager->remove($marcador);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Marcador eliminado');
         }
 
-        return $this->redirectToRoute('marcador_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
     }
 }

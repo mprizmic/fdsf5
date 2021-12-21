@@ -2,12 +2,12 @@
 
 {% block title %}Edit Marcador{% endblock %}
 
-{% block body %}
+{% block contenedor_principal %}
     <h1>Edit Marcador</h1>
 
     {{ include('marcador/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('marcador_index') }}">back to list</a>
+    <a href="{{ path('app_index') }}">back to list</a>
 
     {{ include('marcador/_delete_form.html.twig') }}
 {% endblock %}

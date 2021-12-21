@@ -1,4 +1,7 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'novalidate':'novalidate'}} ) }}
+
+<!-- novalidate hace que no se valide por HTML, se valida por PHP -->
+
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
