@@ -19,6 +19,17 @@ class MarcadorRepository extends ServiceEntityRepository
         parent::__construct($registry, Marcador::class);
     }
 
+    public function buscarPorNombreCategoria($nombreCategoria)
+    {
+        return $this->createQueryBuilder('m')
+        ->innerJoin('m.categoria', 'c')
+        ->where('c.nombre = :nombreCategoria')
+        ->setParameter('nombreCategoria', $nombreCategoria )
+        ->setMaxResults(10)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
     // /**
     //  * @return Marcador[] Returns an array of Marcador objects
     //  */

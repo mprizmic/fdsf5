@@ -22,6 +22,11 @@
                 <strong class="text-gray-dark">{{ marcador.nombre }}</strong>
               </a>
               <span class="d-block">Categoría: {{ marcador.categoria.nombre }}</span>
+              <span class="d-block">
+                <small>
+                  {{ marcador.creado|tiempo({ formato : formato_fecha }) }} <!-- formato_fecha es variable global de twig puesto en su archivo de configuracion -->
+                </small>
+              </span>
             </div>
             <div class="d-flex">                  
               <a href="{{ path('marcador_edit', { id: marcador.id }) }}" class="btn btn-link mg-3">   <!-- lapiz para editar -->
