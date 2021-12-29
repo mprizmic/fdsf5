@@ -30,6 +30,16 @@ class MarcadorRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
+
+    public function buscarPorNombre($nombre)
+    {
+        return $this->createQueryBuilder('m')
+        ->where('c.nombre like :nombre')
+        ->setParameter('nombre', "%nombre%" )
+        ->getQuery()
+        ->getResult()
+        ;
+    }
     // /**
     //  * @return Marcador[] Returns an array of Marcador objects
     //  */

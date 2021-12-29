@@ -1,0 +1,35 @@
+{{
+    form_start(
+        formulario_busqueda,
+        {
+            attr: {
+                novalidate: 'novalidate',
+                class: 'form-inline'
+            },
+            method: 'POST',
+            action: path('app_busqueda')
+        }
+    )
+
+}}
+
+{{
+    form_widget(
+        formulario_busqueda.busqueda, {
+            attr: {
+                class: 'm1-2'
+            }
+        }
+    )
+}}
+
+{{
+    form_widget(
+        formulario_busqueda.buscar, {
+            attr: {
+                class: 'btn btn-primary m1-2'
+            }
+        }
+    )
+}}
+{{ form_end('formulario_busqueda') }}
