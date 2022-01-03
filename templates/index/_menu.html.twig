@@ -4,7 +4,7 @@
 
 {% set app_activa = '' %}
 
-<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
   <a class="navbar-brand" href="{{ path('app_index') }}">Mis marcadores</a>
   <button class="navbar-toggler p-0 border-0"
     type="button"
@@ -14,6 +14,7 @@
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     
+    <!-- lo que va alineado a la izquierda de la barra superior -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><a class="nav-link" href="{{ path('app_favoritos')}}">Favoritos</a></li>
 
@@ -37,6 +38,8 @@
       {% endfor %}
       
     </ul>
+
+    <!-- lo que queda a la derecha de la barra superior -->
     <div class="d-md-flex my-2 my-lg-0">
       <a class="btn btn-outline-success mr-2 w-100 mb-3 mb-sm-0" title="Gestión de categorias" href="{{ path('app_listado_categoria') }}">
         Categorías
