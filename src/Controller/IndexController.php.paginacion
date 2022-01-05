@@ -93,29 +93,45 @@ class IndexController extends AbstractController
 
     /**
      * @Route(
-     *      "/{categoria}", 
+     *      "/{categoria}/{pagina}", 
      *      name="app_index", 
      *      defaults={
-     *          "categoria": "",
+     *          "categoria": "todas",
+     *          "pagina": 1
+     *      },
+     *      requirements={
+     *          "pagina"="\+d"
      *      }
      * )
      * 
      * lisado de marcadores
      */
-    public function index(String $categoria, CategoriaRepository $categoriaRepository, MarcadorRepository $marcadorRepository): Response
+    public function index(String $categoria, int $pagina, CategoriaRepository $categoriaRepository, MarcadorRepository $marcadorRepository): Response
     {
+        $elementosPorPagina = self::ELEMENTOS_POR_PAGINA;
 
-        if (!empty($categoria)) {
+        $categoria = (int) $categoria > 0 ? (int)$categoria : $categoria;
+        if (is_int($categoria)){
+            $categoria = 'todas';
+            $pagina = $categoria;
+        }
+
+        if ($categoria && 'todas'!==$categoria) {
             if (!$categoriaRepository->findByNombre($categoria)) {
                 throw $this->createNotFoundException("La categoria '$categoria' no existe");
             }
-            $marcadores = $marcadorRepository->buscarPorNombreCategoria($categoria);
+            $marcadores = $marcadorRepository->buscarPorNombreCategoria($categoria, $pagina, $elementosPorPagina);
         } else {
-            $marcadores = $marcadorRepository->buscarTodos();
+            $marcadores = $marcadorRepository->buscarTodos($pagina, $elementosPorPagina);
         }
 
         return $this->render('index/index.html.twig', [
             'marcadores' => $marcadores,
+            'pagina' => $pagina,
+            'parametros_ruta' => [
+                'categoria' => $categoria,
+                ],
+            'elementos_por_pagina' => $elementosPorPagina,
             ]
         );
     }

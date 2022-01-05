@@ -1,3 +1,5 @@
+<!-- buscador de la línea superior -->
+
 {{
     form_start(
         formulario_busqueda,
@@ -17,7 +19,7 @@
     form_widget(
         formulario_busqueda.busqueda, {
             attr: {
-                class: 'm1-2'
+                class: 'ml-2'
             }
         }
     )
@@ -27,9 +29,9 @@
     form_widget(
         formulario_busqueda.buscar, {
             attr: {
-                class: 'btn btn-primary m1-2'
+                class: 'btn btn-primary ml-2'
             }
         }
     )
 }}
-{{ form_end('formulario_busqueda') }}
+{{ form_end(formulario_busqueda) }}

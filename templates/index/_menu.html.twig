@@ -14,7 +14,9 @@
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     
-    <!-- lo que va alineado a la izquierda de la barra superior -->
+    <!-- lo que va alineado a la izquierda de la barra superior 
+    es la lista de categorias -->
+
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><a class="nav-link" href="{{ path('app_favoritos')}}">Favoritos</a></li>
 
@@ -39,7 +41,7 @@
       
     </ul>
 
-    <!-- lo que queda a la derecha de la barra superior -->
+    <!-- lo que queda a la derecha de la barra superior, antes del buscador -->
     <div class="d-md-flex my-2 my-lg-0">
       <a class="btn btn-outline-success mr-2 w-100 mb-3 mb-sm-0" title="Gestión de categorias" href="{{ path('app_listado_categoria') }}">
         Categorías
@@ -50,13 +52,22 @@
     </div>
 
     <!-- campo de busqueda de marcadores -->
-    {{
-      render(controller(
-        'App\\Controller\\IndexController::busqueda',
-        {
-          busqueda: busqueda is defined ? busqueda
-        }
-      ))
-    }}
+    {% if formulario_busqueda is defined %}
+      {{ include( 'comunes/_buscador.html.twig', {
+            formulario_busqueda: formulario_busqueda
+          }
+        )
+      }}
+    {% else %}
+      <!-- renderiza directamente el controlador, pasandole el parametro del nombre del marcador, si es que esta definido -->
+      {{
+        render(controller(
+          'App\\Controller\\IndexController::busqueda',
+          {
+            busqueda: busqueda is defined ? busqueda
+          }
+        ))
+      }}
+    {% endif %}
   </div>
 </nav>

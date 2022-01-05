@@ -20,7 +20,7 @@ class MarcadorRepository extends ServiceEntityRepository
         parent::__construct($registry, Marcador::class);
     }
 
-    public function buscarPorNombreCategoria($nombreCategoria)
+    public function buscarPorNombreCategoria($nombreCategoria, $pagina = 1, $elementos_por_pagina = 5)
     {
         $query =  $this->createQueryBuilder('m')
         ->innerJoin('m.categoria', 'c')
@@ -30,10 +30,10 @@ class MarcadorRepository extends ServiceEntityRepository
         ->getQuery()
         ;
         
-        return $query->getResult();
+        return $paginador = $this->paginacion($query, $pagina, $elementos_por_pagina);
     }
     
-    public function buscarTodos()
+    public function buscarTodos($pagina = 1, $elementos_por_pagina = 5)
     {
         $query =  $this->createQueryBuilder('m')
         ->orderBy('m.creado', 'DESC')
@@ -41,11 +41,11 @@ class MarcadorRepository extends ServiceEntityRepository
         ->getQuery()
         ;
         
-        return $query->getResult();
+        return $paginador = $this->paginacion($query, $pagina, $elementos_por_pagina);    
     }
     
 
-    public function buscarPorNombre($nombre)
+    public function buscarPorNombre($nombre, $nombreCategoria, $pagina = 1, $elementos_por_pagina = 5)
     {
         $query = $this->createQueryBuilder('m')
         ->where('m.nombre like :nombre')
@@ -54,7 +54,7 @@ class MarcadorRepository extends ServiceEntityRepository
         ->getQuery()
         ;
 
-        return $query->getResult();
+        return $paginador = $this->paginacion($query, $pagina, $elementos_por_pagina);        
     }
 
     public function paginacion($dql, $pagina = 1, $elementos_por_pagina = 5) {

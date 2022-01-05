@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-
 use App\Entity\Marcador;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
