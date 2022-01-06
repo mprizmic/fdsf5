@@ -29,7 +29,8 @@
       {% for categoria in categoria_repository.findAll %}
 
         <!-- esto es para que se ponga activa la categoria elegida -->
-        {% if categoria.nombre == nombre_categoria %}
+        <!-- esta condicion no es necesaria salvo que se llame a este menu desde otra ruta  'app_index' == app_ruta and -->
+        {% if 'app_index' == app_ruta and categoria.nombre == nombre_categoria %}
           {% set app_activa = 'active' %}
         {% else %}
           {% set app_activa = '' %} 
