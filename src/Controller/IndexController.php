@@ -102,20 +102,24 @@ class IndexController extends AbstractController
      * 
      * lisado de marcadores
      */
-    public function index(String $categoria, CategoriaRepository $categoriaRepository, MarcadorRepository $marcadorRepository): Response
+    public function index(Request $request, String $categoria, CategoriaRepository $categoriaRepository, MarcadorRepository $marcadorRepository): Response
     {
 
+        $offset = max(0, $request->query->getInt('offset', 0));
+        
         if (!empty($categoria)) {
             if (!$categoriaRepository->findByNombre($categoria)) {
                 throw $this->createNotFoundException("La categoria '$categoria' no existe");
             }
             $marcadores = $marcadorRepository->buscarPorNombreCategoria($categoria);
         } else {
-            $marcadores = $marcadorRepository->buscarTodos();
+            $marcadores = $marcadorRepository->getMarcadorPaginador($offset);
         }
 
         return $this->render('index/index.html.twig', [
             'marcadores' => $marcadores,
+            'previous' => $offset - MarcadorRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($marcadores), $offset + MarcadorRepository::PAGINATOR_PER_PAGE),
             ]
         );
     }
