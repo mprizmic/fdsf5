@@ -5,6 +5,8 @@
 {% set app_activa = '' %}
 
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+
+  <!-- icono de home -->
   <a class="navbar-brand" href="{{ path('app_index') }}">Mis marcadores</a>
   <button class="navbar-toggler p-0 border-0"
     type="button"
@@ -12,6 +14,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <!-- comienza la barra -->
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     
     <!-- lo que va alineado a la izquierda de la barra superior 
@@ -26,7 +29,7 @@
       {% for categoria in categoria_repository.findAll %}
 
         <!-- esto es para que se ponga activa la categoria elegida -->
-        {% if 'app_index' == app_ruta and categoria.nombre == nombre_categoria %}
+        {% if categoria.nombre == nombre_categoria %}
           {% set app_activa = 'active' %}
         {% else %}
           {% set app_activa = '' %} 

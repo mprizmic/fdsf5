@@ -12,9 +12,13 @@
 
       {% for marcador in marcadores %}
       <div class="media text-muted pt-3">
+
+        <!-- imagen de cuadradp -->
         <svg width="32" height="32" class="mr-2 rounded">
           <rect width="32" height="32" style="fill:{{marcador.categoria.color}};" />
         </svg>
+
+
         <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">  
           <div class="d-flex justify-content-between align-items-center w-100">
             <div> 
@@ -29,13 +33,16 @@
               </span>
             </div>
             <div class="d-flex">  
-                <a href="#" class="btn btn-link mg-3 favorito {{ marcador.favorito ? 'activo' }}"
+
+              <!-- estrella de favorito -->
+              <a href="#" class="btn btn-link mg-3 favorito {{ marcador.favorito ? 'activo' }}"
                 data-id="{{ marcador.id }}"
                 data-url="{{ path('app_editar_favorito') }}">  
                 <span class="oi oi-star" title="Favorito" aria-hidden="true"></span>
               </a>
 
-              <a href="{{ path('marcador_edit', { id: marcador.id }) }}" class="btn btn-link mg-3">   <!-- lapiz para editar -->
+              <!-- lapiz para editar -->
+              <a href="{{ path('marcador_edit', { id: marcador.id }) }}" class="btn btn-link mg-3">   
                   <span class="oi oi-pencil" title="Editar" aria-hidden="true"></span>
               </a>
 
