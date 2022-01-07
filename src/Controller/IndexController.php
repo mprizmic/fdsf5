@@ -112,7 +112,8 @@ class IndexController extends AbstractController
             }
             $marcadores = $marcadorRepository->buscarPorNombreCategoria($categoria);
         } else {
-            $marcadores = $marcadorRepository->getMarcadorPaginador($offset);
+            // $marcadores = $marcadorRepository->getMarcadorPaginador($offset);
+            $marcadores = $marcadorRepository->buscarTodos($offset);
         }
 
         return $this->render('index/index.html.twig', [

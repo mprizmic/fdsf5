@@ -35,7 +35,7 @@ class MarcadorRepository extends ServiceEntityRepository
         return $query->getResult();
     }
     
-    public function buscarTodos()
+    public function buscarTodos(int $offset = 0)
     {
         $query =  $this->createQueryBuilder('m')
         ->orderBy('m.creado', 'DESC')
@@ -43,7 +43,7 @@ class MarcadorRepository extends ServiceEntityRepository
         ->getQuery()
         ;
         
-        return $query->getResult();
+        return $this->getPaginator($query, $offset);
     }
     
 
@@ -59,7 +59,7 @@ class MarcadorRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function getMarcadorPaginador(int $offset) : Paginator {
+    public function getMarcadorPaginador(int $offset = 0) : Paginator {
         $query =  $this->createQueryBuilder('m')
         ->addOrderBy('m.nombre', 'ASC')
         ->setMaxResults(self::PAGINATOR_PER_PAGE)
@@ -71,7 +71,7 @@ class MarcadorRepository extends ServiceEntityRepository
     }
 
     
-    public function getPaginator($dql, int $offset) : Paginator {
+    public function getPaginator($dql, int $offset ) : Paginator {
         $paginador = new Paginator($dql);
         $paginador->getQuery()
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
