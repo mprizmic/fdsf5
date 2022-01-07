@@ -14,7 +14,6 @@ use Symfony\Component\Form\FormView;
 
 class IndexController extends AbstractController
 {
-    public const ELEMENTOS_POR_PAGINA = 3;
     /**
      * @Route("/buscar/{busqueda}", name="app_busqueda", defaults={"busqueda":""} )
      * 

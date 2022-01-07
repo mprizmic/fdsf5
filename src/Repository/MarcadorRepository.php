@@ -15,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class MarcadorRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 2;
+    public const PAGINATOR_PER_PAGE = 3;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -61,7 +61,6 @@ class MarcadorRepository extends ServiceEntityRepository
 
     public function getMarcadorPaginador(int $offset) : Paginator {
         $query =  $this->createQueryBuilder('m')
-        ->orderBy('m.creado', 'DESC')
         ->addOrderBy('m.nombre', 'ASC')
         ->setMaxResults(self::PAGINATOR_PER_PAGE)
         ->setFirstResult($offset)
@@ -70,6 +69,8 @@ class MarcadorRepository extends ServiceEntityRepository
 
         return new Paginator($query);
     }
+
+    
     public function getPaginator($dql, int $offset) : Paginator {
         $paginador = new Paginator($dql);
         $paginador->getQuery()

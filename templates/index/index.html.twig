@@ -60,21 +60,12 @@
       {% else %}
         <p>No hay marcadores disponibles</p>
       {% endfor %}
-          <div>  
-              <span>      
-              {% if previous >= 0 %}
-                  <a href="{{ path('app_index', { offset: previous }) }}">Previa</a>
-              {% endif %}
-                  
-                      {% if marcadores|length > 0 %}
-                        <span><small>(Hay {{ marcadores|length }} marcadores)</small></span>
-                      {% endif %}
-                  
-              {% if next < marcadores|length %}
-                  <a href="{{ path('app_index', { offset: next }) }}">Próxima</a>
-              {% endif %}
-              </span>
-          </div>
-    </div>
+
+      <!-- paginacion -->
+      <div class="mt-3">
+        {{ include('comunes/_paginacion.html.twig') }}
+      </div>
+
+  </div>
 {% endblock %}
 
