@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormView;
 
-class IndexController extends AbstractController
+class ZindexController extends AbstractController
 {
     public const ELEMENTOS_POR_PAGINA = 3;
     /**
