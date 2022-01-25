@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9f6fe4e301b6874ef8b888a7953fb3c",
+    "content-hash": "3cbb91ffa9bf0cbd91fc68f0c40defd6",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7188,16 +7188,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.4.1",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "2366ac8d8abe0c077844613c1a4f0c0a9f522dcc"
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
-                "reference": "2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1b56c32c3679002b3a42384a580e16e2600f41c1",
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1",
                 "shasum": ""
             },
             "require": {
@@ -7257,7 +7257,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v5.4.1"
+                "source": "https://github.com/symfony/var-dumper/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -7273,7 +7273,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-01T15:04:08+00:00"
+            "time": "2021-12-29T10:10:35+00:00"
         },
         {
             "name": "symfony/var-exporter",

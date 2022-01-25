@@ -5,6 +5,7 @@ twig:
         formato_fecha: '%app.formato_fecha%'
         # se pone aca por que va para el menu superior y así no hace falta pasarlo en cada controlador
         categoria_repository: '@App\Repository\CategoriaRepository'
+        servicio_mio: '@App\Service\ServicioMio'
 
 when@test:
     twig:

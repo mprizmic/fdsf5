@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PruebaController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! </h1>
+
+    <div>
+        Your controller at <code><a href="{{ '/home/marcelo/proyectos/mis_marcadores/src/Controller/PruebaController.php'|file_link(0) }}">src/Controller/PruebaController.php</a></code>
+    </div>
+
+    <div>
+        Nombre de la ruta: {{ app.request.attributes.get('_route') }}
+    </div>
+    <div>
+        Parametro param: {% if param is defined %}{{ param }}{% endif %}
+    </div>
+    <div>
+        dir IP: {{ direccionip }}
+    </div>
+    <div>
+        formato fecha : {{ ff }}
+    </div>
+    <div>
+        usuario : {{ app.user |default('nadie')}}
+    </div>
+    <div>
+        environment : {{ app.environment }}
+    </div>
+    <div>
+        tocken: {{ app.token }}
+    </div>   
+    <div>
+        debug: {{ app.debug }}
+    </div>      
+    <div>
+        version (parametro de la aplicacion qeu viene del controller): {{ version }}
+    </div>                          
+    <div>
+        servicio mio (clase pasada directamente por twig.yaml): {{ servicio_mio.retornarNombre }}
+    </div>    
+    <div>
+        servicio mio (clase pasada desde controlador): {{ mi_nombre }}
+    </div>        
+</div>
+{% endblock %}
