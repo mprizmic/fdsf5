@@ -19,8 +19,10 @@ class PruebaController extends AbstractController
 
         $ff = $this->getParameter('app.formato_fecha');
 
-
+        //toma el parametro del yaml para la construccion
         $nombre1 = $servicio_mio->retornarNombre();
+        
+        //se instancia por unica vez
         $servicio_mio->setNombre('Marcelo');
         $nombre2 = $servicio_mio->retornarNombre();
 

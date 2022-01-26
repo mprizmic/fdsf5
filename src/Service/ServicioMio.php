@@ -10,9 +10,9 @@ class ServicioMio {
 
     private $mi_nombre;
 
-    public function __construct(string $nombre = 'Mepk')
+    public function __construct(string $mi_nombre)
     {
-        $this->mi_nombre = $nombre;
+        $this->mi_nombre = $mi_nombre;
     }
     public function setNombre($nombre)
     {

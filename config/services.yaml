@@ -6,6 +6,7 @@
 parameters:
     app.formato_fecha: 'd/m/Y H:m:S'  #accesible desde php o twig
     app.version: '0.1'
+    app.version.symfony: '5.4'
 
 services:
     # default configuration for services in *this* file
@@ -28,7 +29,8 @@ services:
 
 
     
-    # App\Service\ServicioMio:
-    #     arguments: ['MEPK']
+    App\Service\ServicioMio:
+        arguments: 
+            $mi_nombre: 'MEPK del yaml'
     # app_servicio_mio:
     #     alias: App\Service\ServicioMio
