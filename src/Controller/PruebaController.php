@@ -11,14 +11,18 @@ use App\Service\ServicioMio;
 class PruebaController extends AbstractController
 {
     /**
-     * @Route("/prueba/sarasa/{parax}", name="prueba")
+     * @Route("/prueba/sarasa/{parax}", name="app_prueba")
      */
-    public function index($parax, Request $request, ServicioMio $servicioMio): Response
+    public function index($parax, ServicioMio $servicio_mio, Request $request): Response
     {
         $direccionIp = $request->getClientIp();
 
         $ff = $this->getParameter('app.formato_fecha');
-        $servicioMio->setNombre('Marcelo');
+
+
+        $nombre1 = $servicio_mio->retornarNombre();
+        $servicio_mio->setNombre('Marcelo');
+        $nombre2 = $servicio_mio->retornarNombre();
 
         return $this->render('prueba/index.html.twig', [
             'controller_name' => 'PruebaController',
@@ -26,7 +30,8 @@ class PruebaController extends AbstractController
             'direccionip' => $direccionIp,
             'ff'=> $ff,
             'version' => $this->getParameter('app.version'),
-            'mi_nombre' => $servicioMio->retornarNombre(),
+            'mi_nombre1' => $nombre1,
+            'mi_nombre2' => $nombre2,
         ]);
     }
 }

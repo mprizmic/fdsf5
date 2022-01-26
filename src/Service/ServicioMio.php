@@ -10,15 +10,16 @@ class ServicioMio {
 
     private $mi_nombre;
 
-    public function __construct()
+    public function __construct(string $nombre = 'Mepk')
     {
-        $this->mi_nombre = 'Ezequiel';
+        $this->mi_nombre = $nombre;
     }
     public function setNombre($nombre)
     {
         $this->mi_nombre = $nombre;
     }
-    public function retornarNombre(){
+    public function retornarNombre(): string
+    {
         
         return $this->mi_nombre;
     }
