@@ -13,11 +13,14 @@ class RegistroUsuarios {
     private $router;
     private $encryptor;
 
-    public function __construct(UrlEncryptor $encryptor, UrlGeneratorInterface $router)
-    {
-        $this->router = $router;
-        $this->encryptor = $encryptor;
-    }
+    /*
+    * esta deshabilitado por que falta instalar el paquete
+    */
+    // public function __construct(UrlEncryptor $encryptor, UrlGeneratorInterface $router)
+    // {
+    //     $this->router = $router;
+    //     $this->encryptor = $encryptor;
+    // }
 
     public function generarUrlActivacionUsuario(User $user) {
         $fechaHoraExpiracion = new \DateTime();
@@ -30,7 +33,7 @@ class RegistroUsuarios {
 
         /* los datos no puede pasar en json asì que tienen que ir encriptados */
 
-        $token = $this->encryptor->encrypt(json_encode($datos));
+        $token = ""; //$this->encryptor->encrypt(json_encode($datos));
 
         return $this->router->generate('app_activar_usuario', [
             'token' => $token

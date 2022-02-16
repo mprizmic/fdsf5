@@ -7,7 +7,7 @@ parameters:
     app.formato_fecha: 'd/m/Y H:m:S'  #accesible desde php o twig
     app.version: '0.1'
     app.version.symfony: '5.4'
-    app.email_aplicacion = xchivilcoy@gmail.com
+    app.email_aplicacion: 'xchivilcoy@gmail.com'
 services:
     # default configuration for services in *this* file
     _defaults:
